@@ -9,3 +9,5 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+/centroCultural/nbproject/private/
+/build/
