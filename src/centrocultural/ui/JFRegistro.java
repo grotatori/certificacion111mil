@@ -11,8 +11,10 @@ import java.util.Calendar;
 public class JFRegistro extends javax.swing.JFrame {
     GestionAlumnos ctrlAlumnos = new GestionAlumnos();
     JFInscripcion owner;
+    boolean registrado = false;
     /**
      * Creates new form JFRegistro
+     * @param owner
      */
     public JFRegistro(JFInscripcion owner) {
         initComponents();
@@ -65,7 +67,6 @@ public class JFRegistro extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Nuevo Alumno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("sansserif", 0, 12))); // NOI18N
         jPanel1.setMaximumSize(null);
-        jPanel1.setMinimumSize(null);
 
         jLabel1.setText("Nombre:");
 
@@ -203,6 +204,10 @@ public class JFRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Determina el numero de mes, en base al "nombre"
+     * @return nroMes del 0 al 11
+     */
     private int determinarMes(){
         switch(this.cbMes.getSelectedItem().toString()){
             case "Enero":  return 0;
@@ -232,18 +237,23 @@ public class JFRegistro extends javax.swing.JFrame {
                 try{
                     ctrlAlumnos.nuevoParticipante(txtApellido.getText(), txtNombre.getText(), Long.parseLong(txtTelefono.getText()), txtEmail.getText(), fechaNac.getTime(), txtPadreTutor.getText());
                     lbMensaje.setText("Participante agregado con exito!");
-
-                    System.out.println(this.ctrlAlumnos.getParticipante(this.txtEmail.getText()));
+                    registrado = true;
+                    limpiarCampos();
                 }catch(ExistException ee){
                     lbMensaje.setText(ee.getMessage());
+                }catch (NumberFormatException nfe){
+                    lbMensaje.setText("Debe ingresar un número en el campo ");
                 }
-                limpiarCampos();
             }
         }else{
             lbMensaje.setText("Campos incompletos");
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    /**
+     * Genera la fecha de nacimiento en base a lo cargado en los comboBox
+     * @return Fecha de nacimiento
+     */
     private Calendar generarFecha(){
         int dia = Integer.parseInt(this.cbDia.getSelectedItem().toString());
         int mes = determinarMes();
@@ -253,6 +263,12 @@ public class JFRegistro extends javax.swing.JFrame {
         return calendar;
     }
     
+    /**
+     * Calcula la edad en base a una fecha de nacimiento
+     * @param fechaNac
+     * @return <code>true</code> si es menor a 18,
+     *          <code>false</code> si es igual mayor a 18
+     */
     private boolean determinarEdad(Calendar fechaNac){
         Calendar hoy = Calendar.getInstance();
         
@@ -266,9 +282,13 @@ public class JFRegistro extends javax.swing.JFrame {
         return difAnio < 18;
     }
     
+    /**
+     * Vuelve el control al JFInscripcion
+     */
     private void volverOwner(){
         this.owner.setVisible(true);
-        this.owner.obtenerParticipante();
+        if(registrado)
+            this.owner.obtenerParticipante();
         this.dispose();
     }
     

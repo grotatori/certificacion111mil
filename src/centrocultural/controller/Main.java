@@ -1,11 +1,6 @@
 package centrocultural.controller;
 
-import centrocultural.dao.CondicionHardCore;
-import centrocultural.excepciones.ExistException;
-import centrocultural.model.Profesor;
-import centrocultural.model.Tematica;
 import centrocultural.ui.JFInscripcion;
-import centrocultural.ui.JFRegistro;
 
 /**
  *

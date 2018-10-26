@@ -24,7 +24,7 @@ public class JFInscripcion extends javax.swing.JFrame {
     private final GestionInscripcion ctrlInscripcion = new GestionInscripcion();
     
     private Participante participante = null;
-    private List<Integer> cursoIds = new ArrayList<>();
+    private final List<Integer> cursoIds = new ArrayList<>();
     
     /**
      * Creates new form JFPrincipale
@@ -33,10 +33,13 @@ public class JFInscripcion extends javax.swing.JFrame {
         initComponents();
         cargaCBTematica();
         this.setResizable(false);
-        this.setSize(800,600);
         lbMensaje.setText("");
     }
     
+    /**
+     * Genera un modelo con los cursos especificos de una tematica para mostrarlos en 
+     * la tabla
+     */
     private void cargarTabla(){
         this.jtCursos.removeAll();
         List<Curso> lista = ctrlCurso.getCursosByTematica(cbTematica.getSelectedItem().toString()); //ctrlCurso.getAllCursos();
@@ -213,6 +216,11 @@ public class JFInscripcion extends javax.swing.JFrame {
         );
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnInscribirse.setText("Inscribirse");
         btnInscribirse.setEnabled(false);
@@ -283,8 +291,8 @@ public class JFInscripcion extends javax.swing.JFrame {
                 if(condicion == 1)
                     mensaje = "Inscripcion al curso completada";
                 else
-                    mensaje = "Su incripcion ha sido condicional, debe esperar a que se";
-                JOptionPane.showMessageDialog(this, "Inscripcion al curso completada");
+                    mensaje = "Su incripcion ha sido condicional, debe esperar a que se libere un cupo";
+                JOptionPane.showMessageDialog(this, mensaje);
             }catch(ExistException ee){
                 lbMensaje.setText(ee.getMessage());
             }
@@ -293,6 +301,12 @@ public class JFInscripcion extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnInscribirseActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.participante = null;
+        lbNombre.setText("");
+        lbApellido.setText("");
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,6 +348,10 @@ public class JFInscripcion extends javax.swing.JFrame {
     
     
     //Metodos
+    /**
+     * Se traen las tematicas para cargarlas al ComboBox
+     * @return Lista de tematicas
+     */
     private List<Tematica> traerTematicas(){
         return ctrlTematica.traerTematicas();
     }
@@ -344,17 +362,27 @@ public class JFInscripcion extends javax.swing.JFrame {
             cbTematica.addItem(t.getNombre());
         }
     }
-    
+    /**
+     * Metodo utilizado para obtener el mail ingresado desde el JFRegistro
+     * @return email ingresado o ""
+     */
     public String getEmail(){
         return txtMail.getText();
     }
     
+    /**
+     * Genera el JFRegistro para poder registrar un participante
+     */
     private void activarRegistro(){
         JFRegistro registro = new JFRegistro(this);
         this.setVisible(false);
         registro.setVisible(true);
     }
     
+    /**
+     * Obtiene un particpante buscando en la base de datos
+     * si el participante no existe se activa el registro
+     */
     public void obtenerParticipante(){
         lbMensaje.setText("");
         participante = ctrlAlumnos.getParticipante(txtMail.getText());
