@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="centrocultural.model.Curso" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="curso">
+    <id name="id" column="id_curso">
+      <generator class="identity"/>
+    </id>
+    <property column="nombre" name="nombre" type="string"/>
+    <many-to-one class="centrocultural.model.Profesor" column="id_profesor" name="profesor" lazy="false" />
+    <property column="cupos_disponibles" type="int" name="cuposDisponibles" />
+    <many-to-one class="centrocultural.model.Tematica" column="id_tematica" name="tematica" lazy="false" />
+    <property column="duracion" name="duracion" type="int"/>
+    <property column="carga_horaria" name="cargaHoraria" type="int"/>
+    <property column="aula" type="int" name="aula" />
+
+  </class>
+</hibernate-mapping>

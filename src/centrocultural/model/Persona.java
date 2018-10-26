@@ -1,37 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package centrocultural.model;
-
-import java.util.Date;
 
 /**
  *
  * @author giselaRotatori
  */
-public class Persona {
-    private int id;
-    private String apellido;
-    private String nombre;
-    private int telefono;
-    private String email;
-    
+public abstract class Persona {
+    protected int id;
+    protected String apellido;
+    protected String nombre;
+    protected long telefono;
+    protected String email;
+
     //Constructores
-    public Persona(String apellido, String nombre, int telefono, String email){
+    public Persona(){}
+    public Persona(String apellido, String nombre, long telefono, String email) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
     }
-    
-    //getters/setters
-    public Persona(int id, String apellido, String nombre, int telefono, String email){
+
+    public Persona(int id, String apellido, String nombre, long telefono, String email) {
         this(apellido, nombre, telefono, email);
         this.id = id;
     }
 
+    //getters/setters
     public int getId() {
         return id;
     }
@@ -56,11 +50,11 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
@@ -71,7 +65,10 @@ public class Persona {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
-    
+
+    //Metodos
+    @Override
+    public String toString() {
+        return "{" + "id=" + id + ", apellido=" + apellido + ", nombre=" + nombre + ", telefono=" + telefono + ", email=" + email + '}';
+    }
 }

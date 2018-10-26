@@ -1,0 +1,34 @@
+        GestionAlumnos gestAlumnos = new GestionAlumnos();
+        GestionCursos gestCursos = new GestionCursos();
+        GestionTematicas gestTematica = new GestionTematicas();
+        GestionProfesores gestProfesores = new GestionProfesores();
+        GestionInscripciones gestInscripcion = new GestionInscripciones();
+        
+        ///Hasta quitar create-drop
+        gestTematica.agregarTematica("Manualidades");
+        gestTematica.agregarTematica("Literatura");
+        gestTematica.agregarTematica("Dibujo");
+        gestTematica.agregarTematica("Musica");
+        
+        
+        
+        ///Hasta quitar create-drop
+        gestProfesores.addProfesor("Lopez", "Roberto", 156365987, "roberto@gmail.com", 1200.55F);
+        gestProfesores.addProfesor("Garcia", "Pedro", 154879654, "garcia@gmail.com", 1351.65F);
+        gestProfesores.addProfesor("Gomez", "Veronica", 155874963, "veronica@gmail.com", 1253.48F);
+        gestProfesores.addProfesor("Labrador", "Rosa", 158746321, "labradorrosa@gmail.com", 1320.15F);
+        gestProfesores.addProfesor("Gimenez", "Sofia", 156987412, "sofigimenez@gmail.com", 1310.58F);
+        gestProfesores.addProfesor("Martinez", "German", 154236987, "mgerman@gmail.com", 1225.36F);
+        
+        gestCursos.nuevoCurso("Taller Literario", gestProfesores.getProfesorById(1), 8, gestTematica.getTematicaByName("Literatura"), 6, 5, 2);
+        gestCursos.nuevoCurso("Literatura Moderna", gestProfesores.getProfesorById(2), 10, gestTematica.getTematicaByName("Literatura"), 8, 6, 5);
+        gestCursos.nuevoCurso("Pintura Acuarela", gestProfesores.getProfesorById(3), 15, gestTematica.getTematicaByName("Dibujo"), 10, 6, 8);
+        gestCursos.nuevoCurso("Pintura Abstracta", gestProfesores.getProfesorById(4), 10, gestTematica.getTematicaByName("Dibujo"), 12, 5, 1);
+        gestCursos.nuevoCurso("Porcelana Fria", gestProfesores.getProfesorById(5), 8, gestTematica.getTematicaByName("Manualidades"), 7, 3, 12);
+        gestCursos.nuevoCurso("Artesanias En Madera", gestProfesores.getProfesorById(5), 7, gestTematica.getTematicaByName("Manualidades"), 20, 3, 15);
+        gestCursos.nuevoCurso("Musica Clasica", gestProfesores.getProfesorById(6), 10, gestTematica.getTematicaByName("Musica"), 12, 4, 10);
+        gestCursos.nuevoCurso("Instrumentos Musicales", gestProfesores.getProfesorById(6), 10, gestTematica.getTematicaByName("Musica"), 10, 6, 10);
+        
+        CondicionHardCore condHC = new CondicionHardCore();
+        condHC.addCondicion();
+        

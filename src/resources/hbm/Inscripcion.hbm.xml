@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="centrocultural.model.Inscripcion" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="inscripcion" >
+    <id name="id" column="id">
+        <generator class="identity" />
+    </id>
+    <property name="fechaInscripcion" type="java.util.Date" column="fecha_inscripcion" />
+    <many-to-one class="centrocultural.model.Curso" column="id_curso" name="curso" lazy="false" />
+    <many-to-one class="centrocultural.model.Participante" column="id_participante" name="inscripto" lazy="false" />
+    <many-to-one class="centrocultural.model.Condicion" column="id_condicion" name="condicion" lazy="false" />
+  </class>
+</hibernate-mapping>

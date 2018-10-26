@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class dynamic-insert="false" dynamic-update="false" mutable="true" name="centrocultural.model.Participante" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="Participante">
+      <id name="id" column="id">
+          <generator class="identity" />
+      </id>
+      <property name="apellido" type="string" column="apellido" />
+      <property name="nombre" type="string" column="nombre" />
+      <property name="telefono" type="long" column="telefono" />
+      <property name="email" type="string" column="email" />
+      <property name="fechaNac" type="java.util.Date" column="fechaNac" />
+      <property name="cantCursosAnotado" type="int" column="cantCursosAnotado" />
+      <property name="padreTutor" type="string" column="padre_tutor" />
+  </class>
+</hibernate-mapping>
