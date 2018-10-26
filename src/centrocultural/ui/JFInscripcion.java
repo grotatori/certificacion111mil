@@ -10,7 +10,6 @@ import centrocultural.model.Participante;
 import centrocultural.model.Tematica;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,7 +26,6 @@ public class JFInscripcion extends javax.swing.JFrame {
     private Participante participante = null;
     private List<Integer> cursoIds = new ArrayList<>();
     
-    ButtonGroup rdGroup = new ButtonGroup();
     /**
      * Creates new form JFPrincipale
      */
@@ -35,8 +33,6 @@ public class JFInscripcion extends javax.swing.JFrame {
         initComponents();
         cargaCBTematica();
         this.setResizable(false);
-        rdGroup.add(rbNoRegistrado);
-        rdGroup.add(rbRegistrado);
         this.setSize(800,600);
         lbMensaje.setText("");
     }
@@ -75,8 +71,6 @@ public class JFInscripcion extends javax.swing.JFrame {
     private void initComponents() {
 
         jpEstudiante = new javax.swing.JPanel();
-        rbRegistrado = new javax.swing.JRadioButton();
-        rbNoRegistrado = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         txtMail = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -97,11 +91,6 @@ public class JFInscripcion extends javax.swing.JFrame {
         setTitle("Formulario Inscripción");
 
         jpEstudiante.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estudiante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("sansserif", 0, 12))); // NOI18N
-
-        rbRegistrado.setSelected(true);
-        rbRegistrado.setText("Estudiante Registrado");
-
-        rbNoRegistrado.setText("Estudiante No Registrado");
 
         jLabel1.setText("Ingrese su e-mail");
 
@@ -128,20 +117,16 @@ public class JFInscripcion extends javax.swing.JFrame {
         jpEstudianteLayout.setHorizontalGroup(
             jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpEstudianteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbRegistrado)
-                    .addComponent(rbNoRegistrado))
                 .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpEstudianteLayout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                        .addGap(233, 233, 233)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpEstudianteLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(250, 250, 250)
                         .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpEstudianteLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -159,22 +144,15 @@ public class JFInscripcion extends javax.swing.JFrame {
         jpEstudianteLayout.setVerticalGroup(
             jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpEstudianteLayout.createSequentialGroup()
-                .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpEstudianteLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar))
-                        .addGap(18, 18, 18)
-                        .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(lbNombre)))
-                    .addGroup(jpEstudianteLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(rbRegistrado)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbNoRegistrado)))
+                .addContainerGap()
+                .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addGap(18, 18, 18)
+                .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lbNombre))
                 .addGap(18, 18, 18)
                 .addGroup(jpEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -405,8 +383,6 @@ public class JFInscripcion extends javax.swing.JFrame {
     private javax.swing.JLabel lbApellido;
     private javax.swing.JLabel lbMensaje;
     private javax.swing.JLabel lbNombre;
-    private javax.swing.JRadioButton rbNoRegistrado;
-    private javax.swing.JRadioButton rbRegistrado;
     private javax.swing.JTextField txtMail;
     // End of variables declaration//GEN-END:variables
 }
