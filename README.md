@@ -1,4 +1,4 @@
-# certificacion 111MIL
+# Certificacion Instructores 111MIL
 
 Proyecto para certificar como instructor del 111Mil de Rotatori Gisela
 
@@ -36,3 +36,16 @@ Una vez cargada la informacion del participante, se puede proceder a inscribirse
 Selecciona el curso que desee y presiona el boton inscribir.
 El sistema verifica que el participante pueda inscribirse al curso (comprobando a cuántos cursos está inscripto, si está en 3 cursos no le permite inscribirse a otro). También se verifica el cupo disponible del curso, ya que si no hay cupo el participante se inscribe como condicional (tiene que esperar a que alguien se de de baja para poder tener una inscripción efectiva)
 Una vez hecha todas las validadiones, se le informa al participante que fue inscripto de manera exitosa.
+
+## Diagrama de clases
+Se tuvieron utiliazaron 7 clases en la capa modelo:
+  - Persona <<abstracta>>
+  - Participante
+  - Profesor
+  - Curso
+  - Inscripcion
+  - Tematica
+  - Condicion
+
+## Diagrama de secuencia
+Para el diagrama de secuencia se tuvieron en cuenta la capa de vista (considerando los Frames como objetos) y la capa de controladoras, cabe aclarar que desde la capa de controladoras se llama a la capa de DAO, pero por tema de prolijidad en el diagrama se excluyo.
